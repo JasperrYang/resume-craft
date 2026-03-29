@@ -1,0 +1,79 @@
+<!--pages/task/chat/chat.wxml - 对话式调整-->
+<view class="chat-page">
+  <!-- 顶部简历预览（可折叠） -->
+  <view class="preview-section {{previewExpanded ? 'expanded' : 'collapsed'}}">
+    <view class="preview-header" bindtap="togglePreview">
+      <view class="preview-title">当前简历预览</view>
+      <view class="preview-score">匹配度: {{matchScore}}%</view>
+      <view class="preview-toggle">{{previewExpanded ? '收起' : '展开'}}</view>
+    </view>
+    <scroll-view scroll-y class="preview-content" wx:if="{{previewExpanded}}">
+      <text class="preview-text">{{resumeText}}</text>
+    </scroll-view>
+  </view>
+
+  <!-- 对话区域 -->
+  <scroll-view
+    scroll-y
+    class="chat-list"
+    scroll-into-view="{{scrollToId}}"
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <!-- 欢迎消息 -->
+    <view class="chat-bubble assistant" id="msg-welcome">
+      <text>你好！我是你的简历优化助手。\n\n你可以告诉我需要调整的地方，比如：\n• "第二段经历重点突出管理能力"\n• "整体语气更正式一些"\n• "精简项目描述"\n\n每次优化包含 {{chatLimit}} 轮免费调整。</text>
+    </view>
+
+    <!-- 消息列表 -->
+    <block wx:for="{{messages}}" wx:key="id">
+      <view class="chat-bubble {{item.role}}" id="msg-{{item.id}}">
+        <text>{{item.content}}</text>
+
+        <!-- AI回复的改动展示 -->
+        <block wx:if="{{item.role === 'assistant' && item.changes && item.changes.length > 0}}">
+          <view class="chat-diff" wx:for="{{item.changes}}" wx:for-item="change" wx:key="section">
+            <view class="chat-diff-title">{{change.section}}</view>
+            <view class="chat-diff-old">{{change.before}}</view>
+            <view class="chat-diff-new">{{change.after}}</view>
+          </view>
+
+          <!-- 操作按钮 -->
+          <view class="chat-actions" wx:if="{{!item.applied && !item.reverted}}">
+            <button class="action-btn apply-btn" data-msgid="{{item.id}}" bindtap="onApply">应用修改</button>
+            <button class="action-btn revert-btn" data-msgid="{{item.id}}" bindtap="onRevert">撤销</button>
+          </view>
+          <view class="chat-action-status" wx:if="{{item.applied}}">✓ 已应用</view>
+          <view class="chat-action-status" wx:if="{{item.reverted}}">已撤销</view>
+        </block>
+      </view>
+    </block>
+
+    <!-- 加载中 -->
+    <view class="chat-bubble assistant typing" wx:if="{{isThinking}}" id="msg-typing">
+      <text>正在思考中...</text>
+    </view>
+  </scroll-view>
+
+  <!-- 快捷操作标签 -->
+  <scroll-view scroll-x class="quick-tags" wx:if="{{!isThinking}}">
+    <view class="quick-tag" wx:for="{{quickTags}}" wx:key="*this" data-tag="{{item}}" bindtap="onQuickTag">
+      {{item}}
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入栏 -->
+  <view class="input-bar">
+    <view class="rounds-info">{{chatUsed}}/{{chatLimit}} 轮</view>
+    <input
+      class="chat-input"
+      placeholder="输入调整建议..."
+      value="{{inputText}}"
+      bindinput="onInput"
+      bindconfirm="onSend"
+      confirm-type="send"
+      disabled="{{isThinking}}"
+    />
+    <button class="send-btn" bindtap="onSend" disabled="{{!inputText || isThinking}}">发送</button>
+  </view>
+</view>

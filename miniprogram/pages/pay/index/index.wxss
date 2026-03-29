@@ -1,0 +1,12 @@
+/* pages/pay/index/index.wxss */
+.product-list { margin-top: 8rpx; }
+.product-item { position: relative; border: 3rpx solid transparent; transition: border-color 0.2s; }
+.product-item.selected { border-color: var(--color-primary); }
+.product-badge { position: absolute; top: -2rpx; right: 24rpx; background: var(--color-accent); color: white; font-size: 20rpx; padding: 4rpx 16rpx; border-radius: 0 0 8rpx 8rpx; }
+.product-name { font-size: 32rpx; font-weight: 600; }
+.product-price { margin: 12rpx 0 4rpx; }
+.price-symbol { font-size: 28rpx; color: var(--color-primary); }
+.price-value { font-size: 48rpx; font-weight: 700; color: var(--color-primary); }
+.product-original { font-size: 24rpx; color: var(--color-text-hint); text-decoration: line-through; }
+.product-desc { font-size: 24rpx; color: var(--color-text-secondary); margin-top: 8rpx; }
+.bottom-actions { margin-top: 48rpx; padding-bottom: 48rpx; }

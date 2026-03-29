@@ -1,0 +1,52 @@
+<!--pages/task/jd-input/jd-input.wxml - JD输入-->
+<view class="container">
+  <view class="card">
+    <view class="title">粘贴目标职位JD</view>
+    <view class="subtitle">将招聘网站的职位描述粘贴到下方</view>
+
+    <textarea
+      class="jd-textarea"
+      placeholder="请粘贴完整的职位描述（JD）内容...\n\n例如：\n职位名称：高级后端工程师\n职位要求：\n1. 5年以上开发经验\n2. 精通 Go/Python..."
+      value="{{jdText}}"
+      bindinput="onJdInput"
+      maxlength="5000"
+      auto-height
+    />
+
+    <view class="char-count">{{jdText.length}} / 5000</view>
+  </view>
+
+  <!-- JD链接输入 -->
+  <view class="card">
+    <view class="subtitle">或粘贴招聘链接</view>
+    <input
+      class="input-field"
+      placeholder="https://www.zhipin.com/job/xxx"
+      value="{{jdUrl}}"
+      bindinput="onUrlInput"
+    />
+    <view class="hint" style="margin-top: 8rpx;">支持 Boss直聘、拉勾、猎聘等主流平台</view>
+  </view>
+
+  <!-- 选中的简历 -->
+  <view class="card selected-resume" wx:if="{{selectedResume}}">
+    <view class="subtitle">使用的简历</view>
+    <view class="resume-info">
+      <view class="resume-name">{{selectedResume.title}}</view>
+      <view class="resume-detail">{{selectedResume.basic_info_summary.name}} · {{selectedResume.basic_info_summary.latest_company}}</view>
+    </view>
+    <view class="change-btn" bindtap="onChangeResume">更换</view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="bottom-actions">
+    <button
+      class="btn-primary"
+      bindtap="onSubmit"
+      disabled="{{!jdText && !jdUrl}}"
+      loading="{{submitting}}"
+    >
+      开始AI优化
+    </button>
+  </view>
+</view>

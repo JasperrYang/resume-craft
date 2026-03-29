@@ -1,0 +1,210 @@
+/* pages/task/chat/chat.wxss */
+
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--color-bg);
+}
+
+/* 预览区 */
+.preview-section {
+  background: var(--color-white);
+  border-bottom: 1rpx solid var(--color-border);
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 32rpx;
+}
+
+.preview-title {
+  flex: 1;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.preview-score {
+  font-size: 24rpx;
+  color: var(--color-success);
+  font-weight: 600;
+  margin-right: 16rpx;
+}
+
+.preview-toggle {
+  font-size: 24rpx;
+  color: var(--color-primary);
+}
+
+.preview-content {
+  max-height: 300rpx;
+  padding: 0 32rpx 20rpx;
+}
+
+.preview-text {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* 对话列表 */
+.chat-list {
+  flex: 1;
+  padding: 24rpx 32rpx;
+  overflow-y: auto;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 20rpx 28rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.chat-bubble.user {
+  background: var(--color-primary);
+  color: var(--color-white);
+  margin-left: auto;
+  border-bottom-right-radius: 4rpx;
+}
+
+.chat-bubble.assistant {
+  background: var(--color-white);
+  color: var(--color-text);
+  margin-right: auto;
+  border-bottom-left-radius: 4rpx;
+  box-shadow: var(--shadow);
+}
+
+.chat-bubble.typing {
+  color: var(--color-text-hint);
+}
+
+/* 对话中的diff */
+.chat-diff {
+  margin-top: 16rpx;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.chat-diff-title {
+  font-size: 22rpx;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: 8rpx 0;
+}
+
+.chat-diff-old {
+  background: #FEF2F2;
+  color: #991B1B;
+  padding: 12rpx 16rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+  text-decoration: line-through;
+}
+
+.chat-diff-new {
+  background: #ECFDF5;
+  color: #065F46;
+  padding: 12rpx 16rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+/* 操作按钮 */
+.chat-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.action-btn {
+  flex: 1;
+  font-size: 24rpx;
+  padding: 12rpx 0;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.action-btn::after { border: none; }
+
+.apply-btn {
+  background: var(--color-success);
+  color: white;
+}
+
+.revert-btn {
+  background: #F3F4F6;
+  color: var(--color-text-secondary);
+}
+
+.chat-action-status {
+  font-size: 22rpx;
+  color: var(--color-text-hint);
+  margin-top: 8rpx;
+}
+
+/* 快捷标签 */
+.quick-tags {
+  white-space: nowrap;
+  padding: 12rpx 32rpx;
+  background: var(--color-white);
+  border-top: 1rpx solid var(--color-border);
+}
+
+.quick-tag {
+  display: inline-block;
+  padding: 8rpx 24rpx;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  margin-right: 16rpx;
+}
+
+/* 底部输入栏 */
+.input-bar {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  background: var(--color-white);
+  border-top: 1rpx solid var(--color-border);
+}
+
+.rounds-info {
+  font-size: 20rpx;
+  color: var(--color-text-hint);
+  margin-right: 12rpx;
+  white-space: nowrap;
+}
+
+.chat-input {
+  flex: 1;
+  background: var(--color-bg);
+  border-radius: 32rpx;
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.send-btn {
+  background: var(--color-primary);
+  color: white;
+  font-size: 26rpx;
+  padding: 14rpx 32rpx;
+  border-radius: 32rpx;
+  margin-left: 12rpx;
+  line-height: 1.4;
+}
+
+.send-btn::after { border: none; }
+
+.send-btn[disabled] {
+  background: #D1D5DB;
+  color: white;
+}

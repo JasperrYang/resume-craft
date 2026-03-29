@@ -1,0 +1,31 @@
+<!--pages/task/analyzing/analyzing.wxml-->
+<view class="container analyzing-page">
+  <view class="analyzing-animation">
+    <view class="analyzing-circle"></view>
+    <view class="analyzing-text">AI 正在分析中</view>
+    <view class="analyzing-step">{{currentStep}}</view>
+  </view>
+
+  <view class="steps-progress">
+    <view class="step-item {{stepIndex >= 0 ? 'active' : ''}}">
+      <view class="step-dot"></view>
+      <text>解析JD关键词</text>
+    </view>
+    <view class="step-item {{stepIndex >= 1 ? 'active' : ''}}">
+      <view class="step-dot"></view>
+      <text>匹配能力库</text>
+    </view>
+    <view class="step-item {{stepIndex >= 2 ? 'active' : ''}}">
+      <view class="step-dot"></view>
+      <text>智能改写</text>
+    </view>
+    <view class="step-item {{stepIndex >= 3 ? 'active' : ''}}">
+      <view class="step-dot"></view>
+      <text>生成报告</text>
+    </view>
+  </view>
+
+  <view class="hint" style="text-align:center; margin-top:48rpx;">
+    通常需要 10-30 秒，请耐心等待
+  </view>
+</view>

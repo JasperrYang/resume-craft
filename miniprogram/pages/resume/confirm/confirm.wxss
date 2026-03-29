@@ -1,0 +1,14 @@
+/* pages/resume/confirm/confirm.wxss */
+.section-title { font-size: 30rpx; font-weight: 600; color: var(--color-text); margin-bottom: 16rpx; }
+.info-row { display: flex; padding: 12rpx 0; border-bottom: 1rpx solid var(--color-border); font-size: 28rpx; }
+.info-row:last-child { border-bottom: none; }
+.info-label { width: 120rpx; color: var(--color-text-secondary); flex-shrink: 0; }
+.exp-item { padding: 16rpx 0; border-bottom: 1rpx solid var(--color-border); }
+.exp-item:last-child { border-bottom: none; }
+.exp-header { display: flex; justify-content: space-between; align-items: center; }
+.exp-company { font-size: 28rpx; font-weight: 500; }
+.exp-period { font-size: 22rpx; color: var(--color-text-hint); }
+.exp-title { font-size: 26rpx; color: var(--color-text-secondary); margin: 4rpx 0 8rpx; }
+.exp-keywords { margin-top: 8rpx; }
+.skills-list { display: flex; flex-wrap: wrap; }
+.bottom-actions { margin-top: 48rpx; padding-bottom: 48rpx; }

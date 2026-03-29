@@ -1,0 +1,156 @@
+/* pages/task/result/result.wxss */
+
+/* 评分卡 */
+.score-card {
+  text-align: center;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24rpx;
+}
+
+.score-item {
+  flex: 1;
+  padding: 0 16rpx;
+}
+
+.score-label {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+}
+
+.score-value {
+  font-size: 56rpx;
+  font-weight: 700;
+  margin: 8rpx 0;
+}
+
+.score-before { color: var(--color-warning); }
+.score-after { color: var(--color-success); }
+
+.score-arrow {
+  font-size: 36rpx;
+  color: var(--color-text-hint);
+  padding: 0 8rpx;
+  margin-top: 32rpx;
+}
+
+.score-increase {
+  display: inline-block;
+  background: #ECFDF5;
+  color: var(--color-success);
+  padding: 8rpx 24rpx;
+  border-radius: 24rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  margin-top: 16rpx;
+}
+
+/* 付费墙 */
+.paywall {
+  margin-top: 24rpx;
+}
+
+.paywall-card {
+  text-align: center;
+  padding: 48rpx 32rpx;
+}
+
+.paywall-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.paywall-desc {
+  font-size: 26rpx;
+  color: var(--color-text-secondary);
+  margin: 12rpx 0 32rpx;
+}
+
+/* 改动详情 */
+.change-header {
+  margin-bottom: 16rpx;
+}
+
+.change-section {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8rpx;
+}
+
+.diff-block {
+  margin-bottom: 16rpx;
+}
+
+.diff-label {
+  font-size: 22rpx;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+}
+
+.diff-old { color: var(--color-danger); }
+.diff-new { color: var(--color-success); }
+
+.diff-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  padding: 16rpx;
+  border-radius: var(--radius-sm);
+}
+
+.diff-old-content {
+  background: #FEF2F2;
+  color: #991B1B;
+}
+
+.diff-new-content {
+  background: #ECFDF5;
+  color: #065F46;
+}
+
+.change-reason {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+  padding: 12rpx 16rpx;
+  background: #F9FAFB;
+  border-radius: var(--radius-sm);
+  margin-top: 8rpx;
+}
+
+.reason-label {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* 缺失项 */
+.missing-item {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid var(--color-border);
+}
+
+.missing-item:last-child {
+  border-bottom: none;
+}
+
+.missing-req {
+  font-size: 26rpx;
+  color: var(--color-text);
+  margin-bottom: 8rpx;
+}
+
+.missing-suggestion {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+  padding-left: 8rpx;
+}
+
+/* 底部操作 */
+.bottom-actions {
+  margin-top: 48rpx;
+  padding-bottom: 48rpx;
+}

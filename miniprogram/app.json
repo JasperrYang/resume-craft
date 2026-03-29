@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/resume/upload/upload",
+    "pages/resume/confirm/confirm",
+    "pages/resume/list/list",
+    "pages/task/jd-input/jd-input",
+    "pages/task/analyzing/analyzing",
+    "pages/task/result/result",
+    "pages/task/chat/chat",
+    "pages/pay/index/index",
+    "pages/profile/index/index",
+    "pages/history/list/list"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1A56DB",
+    "navigationBarTitleText": "ResumeCraft",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F3F4F6",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#6B7280",
+    "selectedColor": "#1A56DB",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/history/list/list",
+        "text": "历史",
+        "iconPath": "assets/icons/history.png",
+        "selectedIconPath": "assets/icons/history-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index/index",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

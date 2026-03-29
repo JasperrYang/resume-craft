@@ -1,0 +1,25 @@
+<!--pages/resume/list/list.wxml-->
+<view class="container">
+  <view class="page-header">
+    <view class="title">我的简历库</view>
+    <button class="btn-add" bindtap="onAdd">+ 上传新简历</button>
+  </view>
+
+  <view class="card resume-item" wx:for="{{list}}" wx:key="id" bindtap="onSelect" data-item="{{item}}">
+    <view class="resume-item-header">
+      <view class="resume-item-title">{{item.title}}</view>
+      <view class="tag {{item.parse_status === 'completed' ? 'tag-success' : 'tag-warning'}}">
+        {{item.parse_status === 'completed' ? '已解析' : '解析中'}}
+      </view>
+    </view>
+    <view class="resume-item-info">
+      {{item.basic_info_summary.name || '未知'}} · {{item.basic_info_summary.latest_company || '未知公司'}}
+    </view>
+    <view class="resume-item-time">{{item.created_at}}</view>
+  </view>
+
+  <view class="empty-state" wx:if="{{list.length === 0 && !loading}}">
+    <view class="empty-text">还没有简历，上传一份吧</view>
+    <button class="btn-primary" style="width:auto;margin-top:24rpx;" bindtap="onAdd">上传简历</button>
+  </view>
+</view>

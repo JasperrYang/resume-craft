@@ -1,0 +1,107 @@
+/* pages/resume/upload/upload.wxss */
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 32rpx;
+  border: 3rpx dashed var(--color-border);
+  border-radius: var(--radius);
+  margin-top: 24rpx;
+  background: #FAFAFA;
+}
+
+.upload-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.upload-text {
+  font-size: 30rpx;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.upload-hint {
+  font-size: 24rpx;
+  color: var(--color-text-hint);
+  margin-top: 8rpx;
+}
+
+/* 上传进度 */
+.upload-progress {
+  padding: 48rpx 0;
+  text-align: center;
+}
+
+.progress-text {
+  font-size: 28rpx;
+  color: var(--color-text);
+  margin-bottom: 24rpx;
+}
+
+.progress-bar {
+  height: 12rpx;
+  background: #E5E7EB;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 6rpx;
+  transition: width 0.3s;
+}
+
+.progress-hint {
+  font-size: 24rpx;
+  color: var(--color-text-hint);
+  margin-top: 16rpx;
+}
+
+/* 上传结果 */
+.upload-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0;
+}
+
+.result-icon {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: var(--color-success);
+  color: white;
+  border-radius: 50%;
+  font-size: 40rpx;
+  margin-bottom: 16rpx;
+}
+
+.result-file {
+  font-size: 28rpx;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.result-status {
+  font-size: 24rpx;
+  color: var(--color-success);
+  margin-top: 8rpx;
+}
+
+/* 输入框 */
+.input-field {
+  border: 2rpx solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  margin-top: 12rpx;
+}
+
+/* 底部操作 */
+.bottom-actions {
+  margin-top: 32rpx;
+}

@@ -1,0 +1,7 @@
+/* pages/history/list/list.wxss */
+.history-item { cursor: pointer; }
+.history-header { display: flex; justify-content: space-between; align-items: center; }
+.history-position { font-size: 30rpx; font-weight: 500; }
+.history-company { font-size: 26rpx; color: var(--color-text-secondary); margin-top: 8rpx; }
+.history-score { font-size: 26rpx; color: var(--color-success); margin-top: 8rpx; font-weight: 500; }
+.history-time { font-size: 22rpx; color: var(--color-text-hint); margin-top: 8rpx; }

@@ -1,0 +1,41 @@
+<!--pages/resume/confirm/confirm.wxml-->
+<view class="container">
+  <view class="card">
+    <view class="title">确认解析结果</view>
+    <view class="subtitle">AI已解析你的简历，请确认信息是否准确</view>
+  </view>
+
+  <view class="card" wx:if="{{parsed}}">
+    <view class="section-title">基本信息</view>
+    <view class="info-row"><text class="info-label">姓名</text><text>{{parsed.basic_info.name || '未识别'}}</text></view>
+    <view class="info-row"><text class="info-label">手机</text><text>{{parsed.basic_info.phone || '未识别'}}</text></view>
+    <view class="info-row"><text class="info-label">邮箱</text><text>{{parsed.basic_info.email || '未识别'}}</text></view>
+    <view class="info-row"><text class="info-label">城市</text><text>{{parsed.basic_info.location || '未识别'}}</text></view>
+  </view>
+
+  <view class="card" wx:if="{{parsed.experience.length > 0}}">
+    <view class="section-title">工作经历 ({{parsed.experience.length}}段)</view>
+    <view class="exp-item" wx:for="{{parsed.experience}}" wx:key="index">
+      <view class="exp-header">
+        <text class="exp-company">{{item.company}}</text>
+        <text class="exp-period">{{item.start_date}} - {{item.end_date}}</text>
+      </view>
+      <view class="exp-title">{{item.title}}</view>
+      <view class="exp-keywords">
+        <text class="tag tag-primary" wx:for="{{item.keywords}}" wx:for-item="kw" wx:key="*this">{{kw}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{parsed.skills.length > 0}}">
+    <view class="section-title">技能</view>
+    <view class="skills-list">
+      <text class="tag tag-primary" wx:for="{{parsed.skills}}" wx:key="name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="bottom-actions">
+    <button class="btn-primary" bindtap="onConfirm">确认无误，下一步</button>
+    <view class="hint" style="text-align:center;margin-top:16rpx;">确认后可进入JD输入环节</view>
+  </view>
+</view>

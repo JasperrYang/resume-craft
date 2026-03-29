@@ -1,0 +1,13 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-dotenv==1.0.1
+pydantic==2.10.0
+pydantic-settings==2.6.0
+motor>=3.4.0
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.12
+httpx==0.28.0
+cos-python-sdk-v5==1.9.30
+tencentcloud-sdk-python==3.0.1200
+cryptography==44.0.0
+reportlab==4.2.0

@@ -1,0 +1,46 @@
+{
+    "miniprogramRoot": "./",
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "enhance": true,
+        "compileHotReLoad": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": false,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "compileWorklet": false,
+        "uglifyFileName": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "minifyWXML": true,
+        "localPlugins": false,
+        "disableUseStrict": false,
+        "useCompilerPlugins": [
+            "typescript"
+        ],
+        "condition": false,
+        "swc": false,
+        "disableSWC": true
+    },
+    "appid": "wx4749477a52735bda",
+    "projectname": "resume-craft",
+    "compileType": "miniprogram",
+    "condition": {},
+    "simulatorPluginLibVersion": {},
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "editorSetting": {}
+}

@@ -1,0 +1,81 @@
+<!--pages/task/result/result.wxml - 优化结果页-->
+<view class="container">
+  <!-- 匹配度评分卡 -->
+  <view class="card score-card">
+    <view class="title">匹配度分析</view>
+    <view class="score-row">
+      <view class="score-item">
+        <view class="score-label">优化前</view>
+        <view class="score-value score-before">{{result.match_score.before}}%</view>
+        <view class="score-bar">
+          <view class="score-bar-fill {{result.match_score.before < 50 ? 'score-low' : 'score-mid'}}" style="width: {{result.match_score.before}}%"></view>
+        </view>
+      </view>
+      <view class="score-arrow">→</view>
+      <view class="score-item">
+        <view class="score-label">优化后</view>
+        <view class="score-value score-after">{{result.match_score.after}}%</view>
+        <view class="score-bar">
+          <view class="score-bar-fill {{result.match_score.after >= 80 ? 'score-high' : 'score-mid'}}" style="width: {{result.match_score.after}}%"></view>
+        </view>
+      </view>
+    </view>
+    <view class="score-increase" wx:if="{{result.match_score.after}}">
+      提升 {{result.match_score.after - result.match_score.before}}%
+    </view>
+  </view>
+
+  <!-- 未付费遮罩 -->
+  <view class="paywall" wx:if="{{!isPaid}}">
+    <view class="card paywall-card">
+      <view class="paywall-title">查看完整优化结果</view>
+      <view class="paywall-desc">包含 {{preview.changes_count}} 处优化 + {{preview.missing_count}} 项缺失提醒</view>
+      <button class="btn-primary" bindtap="onGoPay">解锁完整结果 ¥3.9</button>
+    </view>
+  </view>
+
+  <!-- 已付费内容 -->
+  <block wx:if="{{isPaid}}">
+    <!-- 改动详情 -->
+    <view class="card" wx:for="{{result.changes}}" wx:key="index">
+      <view class="change-header">
+        <view class="change-section">{{item.section}}</view>
+        <view class="change-tags">
+          <view class="tag tag-primary" wx:for="{{item.matched_keywords}}" wx:for-item="kw" wx:key="*this">{{kw}}</view>
+        </view>
+      </view>
+
+      <view class="diff-block">
+        <view class="diff-label diff-old">改动前</view>
+        <view class="diff-content diff-old-content">{{item.original}}</view>
+      </view>
+
+      <view class="diff-block">
+        <view class="diff-label diff-new">改动后</view>
+        <view class="diff-content diff-new-content">{{item.optimized}}</view>
+      </view>
+
+      <view class="change-reason">
+        <text class="reason-label">改动原因：</text>{{item.reason}}
+      </view>
+    </view>
+
+    <!-- 缺失项提醒 -->
+    <view class="card" wx:if="{{result.missing_items.length > 0}}">
+      <view class="title">缺失项提醒</view>
+      <view class="missing-item" wx:for="{{result.missing_items}}" wx:key="index">
+        <view class="missing-req">
+          <text class="tag tag-warning">{{item.importance === 'high' ? '重要' : '建议'}}</text>
+          {{item.requirement}}
+        </view>
+        <view class="missing-suggestion">{{item.suggestion}}</view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="bottom-actions">
+      <button class="btn-primary" bindtap="onChat">对话式微调</button>
+      <button class="btn-secondary" bindtap="onExport" style="margin-top: 16rpx;">导出 PDF</button>
+    </view>
+  </block>
+</view>

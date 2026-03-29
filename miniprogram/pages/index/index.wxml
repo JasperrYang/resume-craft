@@ -1,0 +1,83 @@
+<!--pages/index/index.wxml - 首页-->
+<view class="container">
+  <!-- 顶部品牌区 -->
+  <view class="hero">
+    <view class="hero-title">ResumeCraft</view>
+    <view class="hero-subtitle">基于真实经历的简历精修师</view>
+    <view class="hero-desc">绝不捏造经历，只做精准翻译</view>
+  </view>
+
+  <!-- 核心操作入口 -->
+  <view class="card action-card" bindtap="onStartTask">
+    <view class="action-icon">+</view>
+    <view class="action-text">新建优化任务</view>
+    <view class="action-hint">上传简历 + 粘贴JD，AI智能优化</view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-actions">
+    <view class="quick-item" bindtap="onGoResumeList">
+      <view class="quick-num">{{resumeCount}}</view>
+      <view class="quick-label">我的简历</view>
+    </view>
+    <view class="quick-item" bindtap="onGoHistory">
+      <view class="quick-num">{{taskCount}}</view>
+      <view class="quick-label">优化记录</view>
+    </view>
+    <view class="quick-item" bindtap="onGoPay">
+      <view class="quick-num">{{remainingCount}}</view>
+      <view class="quick-label">剩余次数</view>
+    </view>
+  </view>
+
+  <!-- 使用步骤 -->
+  <view class="card">
+    <view class="title">三步完成简历优化</view>
+    <view class="steps">
+      <view class="step">
+        <view class="step-num">1</view>
+        <view class="step-content">
+          <view class="step-title">上传简历</view>
+          <view class="step-desc">支持 PDF / Word 格式</view>
+        </view>
+      </view>
+      <view class="step">
+        <view class="step-num">2</view>
+        <view class="step-content">
+          <view class="step-title">粘贴目标JD</view>
+          <view class="step-desc">AI自动分析岗位要求</view>
+        </view>
+      </view>
+      <view class="step">
+        <view class="step-num">3</view>
+        <view class="step-content">
+          <view class="step-title">一键优化</view>
+          <view class="step-desc">生成针对性简历，导出PDF</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 产品亮点 -->
+  <view class="card">
+    <view class="title">为什么选择我们</view>
+    <view class="features">
+      <view class="feature-item">
+        <view class="feature-icon">✓</view>
+        <view class="feature-text">绝不编造经历，只基于你的真实简历改写</view>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">✓</view>
+        <view class="feature-text">精准匹配JD关键词，通过ATS筛选</view>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">✓</view>
+        <view class="feature-text">对话式微调，像和专家聊天一样修改简历</view>
+      </view>
+      <view class="feature-item">
+        <view class="feature-icon">✓</view>
+        <view class="feature-text">匹配度可视化评分，优化效果一目了然</view>
+      </view>
+    </view>
+  </view>
+</view>

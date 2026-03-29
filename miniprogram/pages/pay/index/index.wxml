@@ -1,0 +1,30 @@
+<!--pages/pay/index/index.wxml-->
+<view class="container">
+  <view class="card">
+    <view class="title">购买优化次数</view>
+    <view class="subtitle">选择适合你的方案</view>
+  </view>
+
+  <view class="product-list">
+    <view class="card product-item {{selectedType === item.type ? 'selected' : ''}}"
+      wx:for="{{products}}" wx:key="type"
+      data-type="{{item.type}}" bindtap="onSelectProduct">
+      <view class="product-badge" wx:if="{{item.badge}}">{{item.badge}}</view>
+      <view class="product-name">{{item.name}}</view>
+      <view class="product-price">
+        <text class="price-symbol">¥</text>
+        <text class="price-value">{{item.price / 100}}</text>
+      </view>
+      <view class="product-original" wx:if="{{item.original_price}}">
+        原价 ¥{{item.original_price / 100}}
+      </view>
+      <view class="product-desc">{{item.description}}</view>
+    </view>
+  </view>
+
+  <view class="bottom-actions">
+    <button class="btn-primary" bindtap="onPay" loading="{{paying}}" disabled="{{!selectedType}}">
+      立即购买
+    </button>
+  </view>
+</view>

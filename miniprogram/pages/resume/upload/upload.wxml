@@ -1,0 +1,51 @@
+<!--pages/resume/upload/upload.wxml - 上传简历-->
+<view class="container">
+  <view class="card">
+    <view class="title">上传你的简历</view>
+    <view class="subtitle">支持 PDF、Word 格式，最大 10MB</view>
+
+    <!-- 上传区域 -->
+    <view class="upload-area" bindtap="onChooseFile" wx:if="{{!uploading && !uploadResult}}">
+      <view class="upload-icon">📄</view>
+      <view class="upload-text">点击选择文件</view>
+      <view class="upload-hint">支持 .pdf .docx 格式</view>
+    </view>
+
+    <!-- 上传中 -->
+    <view class="upload-progress" wx:if="{{uploading}}">
+      <view class="progress-text">正在上传并解析中...</view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <view class="progress-hint">AI 正在识别简历内容，请稍候</view>
+    </view>
+
+    <!-- 上传成功 -->
+    <view class="upload-result" wx:if="{{uploadResult}}">
+      <view class="result-icon">✓</view>
+      <view class="result-file">{{fileName}}</view>
+      <view class="result-status">{{parseStatus === 'completed' ? '解析完成' : '解析中...'}}</view>
+    </view>
+  </view>
+
+  <!-- 简历标题 -->
+  <view class="card" wx:if="{{!uploading}}">
+    <view class="subtitle">简历标题</view>
+    <input
+      class="input-field"
+      placeholder="如：我的简历-2026春招"
+      value="{{title}}"
+      bindinput="onTitleInput"
+    />
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="bottom-actions" wx:if="{{uploadResult}}">
+    <button class="btn-primary" bindtap="onNext" disabled="{{parseStatus !== 'completed'}}">
+      下一步：确认解析结果
+    </button>
+    <button class="btn-secondary" bindtap="onReupload" style="margin-top: 16rpx;">
+      重新上传
+    </button>
+  </view>
+</view>
