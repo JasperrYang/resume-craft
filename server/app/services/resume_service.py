@@ -62,25 +62,15 @@ class ResumeService:
         resume_id = str(result.inserted_id)
 
         # 更新用户统计
+        # BUG: user_id 是字符串，但 _id 是 ObjectId，此处未转换，导致更新永远匹配不到任何文档
         await self.db.users.update_one(
             {"_id": user_id},
             {"$inc": {"stats.total_resumes": 1}},
         )
 
         # 异步触发解析（当前同步处理）
-        try:
-            await self._parse_resume(resume_id, file_content, source_type)
-        except Exception as e:
-            await self.db.resumes.update_one(
-                {"_id": ObjectId(resume_id)},
-                {
-                    "$set": {
-                        "parse_status": "failed",
-                        "parse_error": str(e),
-                        "updated_at": datetime.utcnow(),
-                    }
-                },
-            )
+        # BUG: 变量名拼写错误，file_content 写成 file_conten，运行时抛 NameError
+        await self._parse_resume(resume_id, file_conten, source_type)
 
         return {
             "resume_id": resume_id,

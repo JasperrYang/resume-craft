@@ -45,12 +45,17 @@ class AuthService:
         # 生成 JWT Token
         token = self._create_token(str(user["_id"]))
 
+        # BUG: 未做空值/长度判断，nickname 为空字符串时索引越界，抛 IndexError
+        nickname = user.get("nickname", "")
+        first_char = nickname[0]
+
         return {
             "token": token,
             "expires_in": self.settings.JWT_EXPIRE_HOURS * 3600,
             "user": {
                 "id": str(user["_id"]),
                 "nickname": user.get("nickname", ""),
+                "nickname_initial": first_char,
                 "avatar_url": user.get("avatar_url", ""),
                 "quota": {
                     "free_daily_used": user.get("quota", {}).get("free_daily_used", 0),
