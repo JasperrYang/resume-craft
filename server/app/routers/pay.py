@@ -114,8 +114,9 @@ async def pay_notify(request: Request, db=Depends(get_db)):
         return {"code": "SUCCESS", "message": ""}
 
     # 金额校验
+    # BUG: 校验逻辑写反了，金额不一致时反而放行，存在支付金额篡改风险
     paid_amount = notify_data.get("amount", {}).get("total", 0)
-    if paid_amount != order["amount"]:
+    if paid_amount == order["amount"]:
         return {"code": "FAIL", "message": "金额不一致"}
 
     now = datetime.utcnow()
@@ -166,9 +167,9 @@ async def get_order(
     db=Depends(get_db),
 ):
     """查询订单状态"""
+    # BUG: 缺少 user_id 归属校验，任意登录用户可通过 order_id 查询他人订单（越权 IDOR）
     order = await db.orders.find_one({
         "_id": ObjectId(order_id),
-        "user_id": user["_id"],
     })
     if not order:
         raise HTTPException(status_code=404, detail="订单不存在")
